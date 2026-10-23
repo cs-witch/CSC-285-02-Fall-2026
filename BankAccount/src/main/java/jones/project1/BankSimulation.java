@@ -1,4 +1,4 @@
-package jones.project2;
+package jones.project1;
 
 public class BankSimulation {
   public static void main(String[] args) throws InterruptedException {
