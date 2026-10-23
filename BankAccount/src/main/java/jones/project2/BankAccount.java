@@ -1,3 +1,33 @@
 package jones.project2;
 
-public class BankAccount {}
+public class BankAccount {
+  private int balance = 1000;
+  // Volatile allows threads to see changes to this flag.
+  private volatile boolean acceptingTransactions = true;
+
+  public void deposit(int amount) {
+    int oldBalance = balance;
+    Thread.yield();
+    balance = oldBalance + amount;
+  }
+
+  public void withdraw(int amount) {
+    int oldBalance = balance;
+    Thread.yield();
+    if (oldBalance >= amount) {
+      balance = oldBalance - amount;
+    }
+  }
+
+  public int getBalance() {
+    return balance;
+  }
+
+  public boolean isAcceptingTransactions() {
+    return acceptingTransactions;
+  }
+
+  public void closeAccount() {
+    acceptingTransactions = false;
+  }
+}
