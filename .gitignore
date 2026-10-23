@@ -17,9 +17,9 @@ build/
 .idea
 .venv
 *.class
-
 # Project-specific
 secrets.toml
+*.iml
 *.log
 */assertion.log
 *results/
